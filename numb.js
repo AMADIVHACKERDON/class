@@ -68,7 +68,7 @@ app.get('/api/classify-number/:number?', async (req,res) => {
             error: true
         });
     }
-    const num = parseInt(number)
+    const num = parseInt(req.params.number)
     if (isNaN(num)) {
         return res.status(400).json({
             number: req.params.number,
@@ -76,11 +76,10 @@ app.get('/api/classify-number/:number?', async (req,res) => {
         });
     }
     try {
-        const classification = await classify_number(num);
-        return res.status(400).json(classification); // Handle negative number or other issues                
+        const classification = await classify_number(num);                
     res.json(classification);
     }catch (error) {
-        console.error(error)
+        console.error(error);
         return res.status(500).json({
             error: true,
             message: 'Internal server error'
