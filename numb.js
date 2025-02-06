@@ -36,12 +36,7 @@ function is_prime(n){
 
     
 async function classify_number(number){
-        if (number < 0) {
-            return {
-                error: true,
-                message: "Negative numbers are not allowed for classification."
-            };
-        }
+       
         const properties = [];
         if (isArmstrong(number)) properties.push("armstrong");
         if (number % 2 === 0) properties.push("even");
