@@ -47,6 +47,8 @@ async function classify_number(number){
             const digits = number.toString().split('').map(d => `${d}^${number.toString().length}`);
             armstrongFact = `${number} is an Armstrong number because ${digits.join(" + ")} = ${number}`;
         }
+        const response = await axios.get(`http://numbersapi.com/${Math.abs(number)}`);
+        const funFact = response.data;
         return {
             "number": number,
             "is_prime": is_prime(number),
