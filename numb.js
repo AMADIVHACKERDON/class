@@ -60,7 +60,7 @@ async function classify_number(number){
 }
 
 
-app.get('/:number?', async (req,res) => {
+app.get('/api/classify-number:number?', async (req,res) => {
     const num = parseInt(req.params.number);
     if (!req.params.number) {
         return res.status(400).json({
