@@ -61,8 +61,8 @@ async function classify_number(number){
 
 
 app.get('/api/classify-number/:number?', async (req,res) => {
-    const number = req.params.number;
-    if (!number) {
+    
+    if (!req.params.number) {
         return res.status(400).json({
             number: req.params.number,
             error: true
@@ -77,9 +77,7 @@ app.get('/api/classify-number/:number?', async (req,res) => {
     }
     try {
         const classification = await classify_number(num);
-        if (classification.error) {
-            return res.status(400).json(classification); // Handle negative number or other issues                
-    }
+        return res.status(400).json(classification); // Handle negative number or other issues                
     res.json(classification);
     }catch (error) {
         console.error(error)
