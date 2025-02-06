@@ -46,32 +46,19 @@ async function classify_number(number){
         if (isArmstrong(number)) properties.push("armstrong");
         if (number % 2 === 0) properties.push("even");
         else properties.push("odd");
-
-        if (isPerfect(number)) properties.push("perfect");
-        if (is_prime(number)) properties.push("prime");
-
+        
         let armstrongFact = "";
         if (properties.includes("armstrong")) {
             const digits = number.toString().split('').map(d => `${d}^${number.toString().length}`);
             armstrongFact = `${number} is an Armstrong number because ${digits.join(" + ")} = ${number}`;
         }
-        try {
-            const response = await axios.get(`http://numbersapi.com/${number}`);
-            var funFact = response.data;
-        } catch (error) {
-            var funFact = "Fun fact could not be retrieved";
-        }
-
-
         return {
             "number": number,
-            "even": number % 2 == 0,
-            "positive": number > 0,
-            "prime": is_prime(number),
+            "is_prime": is_prime(number),
             "is_perfect": isPerfect(number),
-            "isArmstrong": isArmstrong(number),
+            "properties": properties,
             "digit_sum": digitSum(number),
-            "funfact": funFact
+            "funfact": armstrongFact
         };
 }
 
