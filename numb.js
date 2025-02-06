@@ -66,8 +66,8 @@ app.get('/:number?', async (req,res) => {
 
     if (!req.params.number || isNaN(num)) {
         return res.status(400).json({
-            number: req.params.number,
-            error: true
+            "number": req.params.number,
+            "error": true
         });
     }
         try {
