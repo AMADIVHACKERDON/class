@@ -57,16 +57,16 @@ app.get('/api/classify-number/:number?', async (req, res) => {
             error: true
         });
     }
-    // If parameter is an alphabet
+    // If parameter is an alphabet or contains non-numeric characters
     if (/[a-zA-Z]/.test(number)) {
         return res.status(400).json({
             number: number,
             error: true
         });
     }
-    // Convert the number parameter to integer
-    const num = parseInt(number);
-    // If it's not a valid number
+    // Convert the number parameter to a float
+    const num = parseFloat(number);
+    // If it's not a valid number or NaN
     if (isNaN(num)) {
         return res.status(400).json({
             number: number,
