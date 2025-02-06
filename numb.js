@@ -63,11 +63,11 @@ async function classify_number(number){
 }
 
 
-app.get('/:number', async (req,res) => {
+app.get('/:number?', async (req,res) => {
     const num = parseInt(req.params.number);
 
 
-    if (isNaN(num)) {
+    if (!req.params.number || isNaN(num)) {
         return res.status(400).json({
             number: req.params.number,
             error: true
