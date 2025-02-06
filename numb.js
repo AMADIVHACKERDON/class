@@ -63,7 +63,7 @@ async function classify_number(number){
 }
 
 
-app.get('/classify/:number', async (req,res) => {
+app.get('/:number', async (req,res) => {
     const num = parseInt(req.params.number);
 
 
