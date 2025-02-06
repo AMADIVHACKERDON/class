@@ -60,8 +60,8 @@ async function classify_number(number){
 }
 
 
-app.get('/api/classify-number:number?', async (req,res) => {
-    const number = req.query.number;
+app.get('/api/classify-number/:number?', async (req,res) => {
+    const number = req.params.number;
     if (!number) {
         return res.status(400).json({
             number: "No number was provided in the request.",
