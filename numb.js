@@ -55,7 +55,7 @@ async function classify_number(number){
             "is_perfect": isPerfect(number),
             "properties": properties,
             "digit_sum": digitSum(number),
-            "funfact": funFact
+            "fun_fact": funFact
         };
 }
 
