@@ -61,10 +61,10 @@ async function classify_number(number){
 
 
 app.get('/api/classify-number/:number?', async (req,res) => {
-    
-    if (!req.params.number) {
+    const number = req.params.number
+    if (!number) {
         return res.status(400).json({
-            number: req.params.number,
+            number: undefined,
             error: true
         });
     }
