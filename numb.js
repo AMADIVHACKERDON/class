@@ -61,17 +61,18 @@ async function classify_number(number){
 
 
 app.get('/api/classify-number:number?', async (req,res) => {
-    const num = parseInt(req.params.number);
-    if (!req.params.number) {
+    const number = req.query.number;
+    if (!number) {
         return res.status(400).json({
             number: "No number was provided in the request.",
             error: true
         });
     }
+    const num = parseInt(number)
     if (isNaN(num)) {
         return res.status(400).json({
-            error: true,
-            message: "Invalid number format."
+            number: req.params.number,
+            error: true
         });
     }
     try {
