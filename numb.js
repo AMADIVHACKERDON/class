@@ -7,7 +7,7 @@ const core = require('cors');
 app.use(core())
 
 const digitSum = (n) => {
-    return n.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+    return Math.abs(n).toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
 };
 
 const isPerfect = (n) => {
