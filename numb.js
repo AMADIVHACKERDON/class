@@ -65,7 +65,7 @@ app.get('/:number?', async (req,res) => {
     if (!req.params.number) {
         return res.status(400).json({
             error: true,
-            message: "No number was provided in the request."
+            number: "No number was provided in the request."
         });
     }
     if (isNaN(num)) {
