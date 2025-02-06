@@ -62,31 +62,31 @@ async function classify_number(number){
 
 app.get('/:number?', async (req,res) => {
     const num = parseInt(req.params.number);
-     if (!req.params.number) {
-        return res.status(400).json(
+    if (!req.params.number) {
+        return res.status(400).json({
             error: true,
             message: "No number was provided in the request."
         });
     }
     if (isNaN(num)) {
         return res.status(400).json({
-            "number": req.params.number,
-            "error": true
+            error: true,
+            message: "Invalid number format."
         });
     }
-        try {
-            const classification = await classify_number(num);
-            if (classification.error) {
-                return res.status(400).json(classification); // Handle negative number or other issues                
-        }
-        res.json(classification);
-        }catch (error) {
-            console.error(error)
-            return res.status(500).json({
-                error: true,
-                message: 'Internal server error'
-            });
-        }   
+    try {
+        const classification = await classify_number(num);
+        if (classification.error) {
+            return res.status(400).json(classification); // Handle negative number or other issues                
+    }
+    res.json(classification);
+    }catch (error) {
+        console.error(error)
+        return res.status(500).json({
+            error: true,
+            message: 'Internal server error'
+        });
+    }   
 });
 
 
