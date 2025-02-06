@@ -63,9 +63,9 @@ async function classify_number(number){
 app.get('/:number?', async (req,res) => {
     const num = parseInt(req.params.number);
      if (!req.params.number) {
-        return res.status(400).json({
-            number: req.params.number,
-            error: true
+        return res.status(400).json(
+            error: true,
+            message: "No number was provided in the request."
         });
     }
     if (isNaN(num)) {
